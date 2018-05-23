@@ -13,7 +13,7 @@ class App extends React.Component {
   componentDidMount() {
     axios
       .get(
-        "https://newsapi.org/v2/everything?q=immigration&sources=the-new-york-times&apiKey=f04b31d91c014184be4a785e6301b4bf"
+        "https://newsapi.org/v2/everything?q=dog&sources=the-new-york-times&apiKey=f04b31d91c014184be4a785e6301b4bf"
       )
       .then(response => {
         console.log(response);
@@ -38,6 +38,8 @@ class App extends React.Component {
             Source: New York times
             <br />
             URL: <a href={article.url}>{article.url}</a>
+            <br />
+            <img src={article.urlToImage} height="100" />
           </li>
         ))}
       </ul>
