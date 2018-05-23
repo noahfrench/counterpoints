@@ -1,19 +1,46 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import axios from "axios";
 
-class App extends Component {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      nyt: []
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get(
+        "https://newsapi.org/v2/everything?q=immigration&sources=the-new-york-times&apiKey=f04b31d91c014184be4a785e6301b4bf"
+      )
+      .then(response => {
+        console.log(response);
+        let nyt1 = response.data.articles;
+
+        this.setState({
+          nyt: nyt1
+        });
+      })
+
+      .catch(err => {
+        console.log(err);
+      });
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <ul>
+        {this.state.nyt.map(article => (
+          <li>
+            Title: {article.title}
+            <br />
+            Source: New York times
+            <br />
+            URL: <a href={article.url}>{article.url}</a>
+          </li>
+        ))}
+      </ul>
     );
   }
 }
