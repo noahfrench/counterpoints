@@ -1,49 +1,46 @@
 import React, { Component } from "react";
 import "./App.css";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import axios from "axios";
+import GlobalSources from "./global.js";
+import ConservativeSources from "./conservative.js";
+import LiberalSources from "./liberal.js";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nyt: []
+      middle: [],
+      word: "immigration",
+      option: 1 //1=global, 2=conservative, 3=liberal
     };
   }
-
-  componentDidMount() {
-    axios
-      .get(
-        "https://newsapi.org/v2/everything?q=dog&sources=the-new-york-times&apiKey=f04b31d91c014184be4a785e6301b4bf"
-      )
-      .then(response => {
-        console.log(response);
-        let nyt1 = response.data.articles;
-
-        this.setState({
-          nyt: nyt1
-        });
-      })
-
-      .catch(err => {
-        console.log(err);
-      });
-  }
   render() {
-    return (
-      <ul>
-        {this.state.nyt.map(article => (
-          <li>
-            Title: {article.title}
-            <br />
-            Source: New York times
-            <br />
-            URL: <a href={article.url}>{article.url}</a>
-            <br />
-            <img src={article.urlToImage} height="100" />
-          </li>
-        ))}
-      </ul>
-    );
+    if (this.state.option === 1) {
+      return (
+        <MuiThemeProvider>
+          <ul>
+            <GlobalSources topic={this.state.word} />
+          </ul>
+        </MuiThemeProvider>
+      );
+    } else if (this.state.option === 2) {
+      return (
+        <MuiThemeProvider>
+          <ul>
+            <ConservativeSources topic={this.state.word} />
+          </ul>
+        </MuiThemeProvider>
+      );
+    } else {
+      return (
+        <MuiThemeProvider>
+          <ul>
+            <LiberalSources topic={this.state.word} />
+          </ul>
+        </MuiThemeProvider>
+      );
+    }
   }
 }
 
