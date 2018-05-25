@@ -20,7 +20,7 @@ class App extends React.Component {
           <GlobalSources topic={this.props.topic} />
         </ul>
       );
-    } else if (this.props.option === "liberal") {
+    } else if (this.props.option === "conservative") {
       return (
         <ul>
           <ConservativeSources topic={this.props.topic} />
