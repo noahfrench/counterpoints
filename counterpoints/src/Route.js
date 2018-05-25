@@ -32,7 +32,12 @@ export default class RouteA extends Component {
               />
             )}
           />
-          <Route path="/Results" component={App} />
+          <Route
+            path="/Results"
+            render={() => (
+              <App topic={this.state.topic} option={this.state.option} />
+            )}
+          />
         </div>
       </BrowserRouter>
     );
