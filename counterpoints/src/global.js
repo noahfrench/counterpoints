@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import axios from "axios";
+import Translate from "./translate.js";
 
 export default class GlobalSources extends Component {
   constructor(props) {
@@ -13,6 +14,16 @@ export default class GlobalSources extends Component {
 
   componentDidMount() {
     let used = [];
+    let norwegian = <Translate phrase={this.props.topic} language="no" />;
+    console.log(norwegian);
+    //WORK ON THIS STUFFF...
+    let arabic = <Translate phrase={this.props.topic} language="ar" />;
+    let spanish = <Translate phrase={this.props.topic} language="es" />;
+    let russian = <Translate phrase={this.props.topic} language="ru" />;
+    let german = <Translate phrase={this.props.topic} language="de" />;
+    let hindi = <Translate phrase={this.props.topic} language="hi" />;
+    let chinese = <Translate phrase={this.props.topic} language="zh" />;
+    let french = <Translate phrase={this.props.topic} language="fr" />;
     axios
       .all([
         axios.get(
@@ -22,7 +33,7 @@ export default class GlobalSources extends Component {
         ),
         axios.get(
           "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
+            norwegian +
             "&sources=aftenposten&apiKey=f04b31d91c014184be4a785e6301b4bf"
         ),
         axios.get(
