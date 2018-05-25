@@ -31,6 +31,9 @@ export default class LiberalSources extends Component {
         )
         .then(response => {
           let arr1 = response.data.articles;
+          if (arr1[0] === undefined || arr1[1] === undefined) {
+            return null;
+          }
           want.push(arr1[0]);
           want.push(arr1[1]);
           console.log(want);
