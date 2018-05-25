@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import axios from "axios";
 import GlobalSources from "./global.js";
 import ConservativeSources from "./conservative.js";
@@ -11,35 +10,27 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      middle: [],
-      word: "immigration",
-      option: 1 //1=global, 2=conservative, 3=liberal
+      middle: []
     };
   }
   render() {
-    if (this.state.option === 1) {
+    if (this.props.option === "global") {
       return (
-        <MuiThemeProvider>
-          <ul>
-            <GlobalSources topic={this.state.word} />
-          </ul>
-        </MuiThemeProvider>
+        <ul>
+          <GlobalSources topic={this.props.topic} />
+        </ul>
       );
-    } else if (this.state.option === 2) {
+    } else if (this.props.option === "liberal") {
       return (
-        <MuiThemeProvider>
-          <ul>
-            <ConservativeSources topic={this.state.word} />
-          </ul>
-        </MuiThemeProvider>
+        <ul>
+          <ConservativeSources topic={this.props.topic} />
+        </ul>
       );
     } else {
       return (
-        <MuiThemeProvider>
-          <ul>
-            <LiberalSources topic={this.state.word} />
-          </ul>
-        </MuiThemeProvider>
+        <ul>
+          <LiberalSources topic={this.props.topic} />
+        </ul>
       );
     }
   }

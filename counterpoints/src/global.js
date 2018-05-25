@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import axios from "axios";
 import Translate from "./translate.js";
 
@@ -8,170 +7,94 @@ export default class GlobalSources extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      middle: []
+      middle: [],
+      sources: [
+        { abrv: "the-new-york-times", num: 40 },
+        { abrv: "aftenposten", num: 0 },
+        { abrv: "argaam", num: 1 },
+        { abrv: "fox-news", num: 40 },
+        { abrv: "globo", num: 2 },
+        { abrv: "la-nacion", num: 3 },
+        { abrv: "spiegel-online", num: 5 },
+        { abrv: "the-gaurdian-au", num: 40 },
+        { abrv: "bbc-news", num: 40 },
+        { abrv: "the-times-of-india", num: 40 },
+        { abrv: "xinhua-net", num: 6 },
+        { abrv: "le-monde", num: 4 },
+        { abrv: "the-jerusalem-post", num: 40 }
+      ],
+      langs: [
+        { code: "no", word: "" },
+        { code: "ar", word: "" },
+        { code: "pt", word: "" },
+        { code: "es", word: "" },
+        { code: "fr", word: "" },
+        { code: "de", word: "" },
+        { code: "zh", word: "" }
+      ],
+      count: 0
     };
   }
 
   componentDidMount() {
-    let used = [];
-    let norwegian = <Translate phrase={this.props.topic} language="no" />;
-    console.log(norwegian);
-    //WORK ON THIS STUFFF...
-    let arabic = <Translate phrase={this.props.topic} language="ar" />;
-    let spanish = <Translate phrase={this.props.topic} language="es" />;
-    let russian = <Translate phrase={this.props.topic} language="ru" />;
-    let german = <Translate phrase={this.props.topic} language="de" />;
-    let hindi = <Translate phrase={this.props.topic} language="hi" />;
-    let chinese = <Translate phrase={this.props.topic} language="zh" />;
-    let french = <Translate phrase={this.props.topic} language="fr" />;
-    axios
-      .all([
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
+    let want = [];
+    for (let j = 0; j < 7; j++) {
+      axios
+        .get(
+          "https://translate.yandex.net/api/v1.5/tr.json/translate?text=" +
             this.props.topic +
-            "&sources=the-new-york-times&apiKey=f04b31d91c014184be4a785e6301b4bf"
-        ),
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
-            norwegian +
-            "&sources=aftenposten&apiKey=f04b31d91c014184be4a785e6301b4bf"
-        ),
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
-            "&sources=argaam&apiKey=f04b31d91c014184be4a785e6301b4bf"
-        ),
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
-            "&sources=fox-news&apiKey=f04b31d91c014184be4a785e6301b4bf"
-        ),
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
-            "&sources=globo&apiKey=f04b31d91c014184be4a785e6301b4bf"
-        ),
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
-            "&sources=google-news-ru&apiKey=f04b31d91c014184be4a785e6301b4bf"
-        ),
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
-            "&sources=spiegel-online&apiKey=f04b31d91c014184be4a785e6301b4bf"
-        ),
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
-            "&sources=the-gaurdian-au&apiKey=f04b31d91c014184be4a785e6301b4bf"
-        ),
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
-            "&sources=bbc-news&apiKey=f04b31d91c014184be4a785e6301b4bf"
-        ),
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
-            "&sources=the-times-of-india&apiKey=f04b31d91c014184be4a785e6301b4bf"
-        ),
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
-            "&sources=xinhua-net&apiKey=f04b31d91c014184be4a785e6301b4bf"
-        ),
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
-            "&sources=le-monde&apiKey=f04b31d91c014184be4a785e6301b4bf"
-        ),
-        axios.get(
-          "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
-            "&sources=google-news-is&apiKey=f04b31d91c014184be4a785e6301b4bf"
+            "&lang=en-" +
+            this.state.langs[j].code +
+            "&key=trnsl.1.1.20180524T202355Z.be1de689c215054b.b0fa44dcd929936ea64480d4a598bba3cc7f9029"
         )
-      ])
-      .then(
-        axios.spread((a, b, c, d, e, f, g, h, i, j, k, l, m) => {
-          let arr1 = a.data.articles
-            .slice(0, 1)
-            .concat(
-              b.data.articles
-                .slice(0, 1)
-                .concat(
-                  c.data.articles
-                    .slice(0, 1)
-                    .concat(
-                      d.data.articles
-                        .slice(0, 1)
-                        .concat(
-                          e.data.articles
-                            .slice(0, 1)
-                            .concat(
-                              f.data.articles
-                                .slice(0, 1)
-                                .concat(
-                                  g.data.articles
-                                    .slice(0, 1)
-                                    .concat(
-                                      h.data.articles
-                                        .slice(0, 1)
-                                        .concat(
-                                          i.data.articles
-                                            .slice(0, 1)
-                                            .concat(
-                                              j.data.articles
-                                                .slice(0, 1)
-                                                .concat(
-                                                  k.data.articles
-                                                    .slice(0, 1)
-                                                    .concat(
-                                                      l.data.articles
-                                                        .slice(0, 1)
-                                                        .concat(
-                                                          m.data.articles
-                                                            .slice(0, 1)
-                                                            .concat()
-                                                        )
-                                                    )
-                                                )
-                                            )
-                                        )
-                                    )
-                                )
-                            )
-                        )
-                    )
-                )
-            );
-          this.setState({
-            middle: arr1
-          });
-          console.log(this.state.middle);
+        .then(response => {
+          let result = response.data.text;
+          this.setState({ [this.state.langs[j].word]: result });
+          this.setState({ count: this.state.count + 1 });
         })
-      )
-      .catch(err => {
-        console.log(err);
-      });
+        .catch(err => {
+          console.log(err);
+        });
+    }
+    for (let i = 0; i < 13; i++) {
+      let outlet = this.state.sources[i];
+      axios
+        .get(
+          "https://newsapi.org/v2/everything?q=" +
+            this.props.topic +
+            "&sources=" +
+            outlet.abrv +
+            "&apiKey=f04b31d91c014184be4a785e6301b4bf"
+        )
+        .then(response => {
+          let arr1 = response.data.articles;
+          if (arr1[0] === undefined) {
+            return null;
+          }
+          want.push(arr1[0]);
+          this.setState({ middle: want });
+          //console.log(this.state.middle);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
   render() {
     return (
-      <MuiThemeProvider>
-        <ul>
-          {this.state.middle.map(article => (
-            <li>
-              Title: {article.title}
-              <br />
-              Source: {article.source.id}
-              <br />
-              URL: <a href={article.url}>{article.url}</a>
-              <br />
-              <img src={article.urlToImage} height="100" />
-            </li>
-          ))}
-        </ul>
-      </MuiThemeProvider>
+      <ul>
+        {this.state.middle.map(article => (
+          <li>
+            Title: {article.title}
+            <br />
+            Source: {article.source.id}
+            <br />
+            URL: <a href={article.url}>{article.url}</a>
+            <br />
+            <img src={article.urlToImage} height="100" />
+          </li>
+        ))}
+      </ul>
     );
   }
 }

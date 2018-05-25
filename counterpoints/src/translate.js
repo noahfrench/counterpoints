@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import axios from "axios";
 
 export default class Translate extends Component {
