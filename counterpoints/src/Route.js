@@ -4,8 +4,9 @@ import App from "./App.js";
 import Homepage from "./homepage.js";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 
-export default class Route extends Component {
+export default class RouteA extends Component {
   constructor() {
+    super();
     this.state = {
       topic: "",
       option: 1
