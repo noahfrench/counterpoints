@@ -9,7 +9,7 @@ export default class RouteA extends Component {
     super();
     this.state = {
       topic: "",
-      option: 1
+      option: ""
     };
   }
   updateField(field, newValue) {
@@ -29,6 +29,7 @@ export default class RouteA extends Component {
               <Homepage
                 updateTopic={newVal => this.updateField("topic", newVal)}
                 updateOption={newVal => this.updateField("option", newVal)}
+                currentOption={this.state.option}
               />
             )}
           />
