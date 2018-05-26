@@ -30,6 +30,7 @@ export default class RouteA extends Component {
                 updateTopic={newVal => this.updateField("topic", newVal)}
                 updateOption={newVal => this.updateField("option", newVal)}
                 currentOption={this.state.option}
+                currentTopic={this.state.topic}
               />
             )}
           />
