@@ -4,14 +4,22 @@ import TextField from "@material-ui/core/TextField";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
 import FormLabel from "@material-ui/core/FormLabel";
 
 export default class Homepage extends React.Component {
+  state = {
+    enterPressed: false
+  };
+
   render() {
+    if (this.state.enterPressed === true) {
+      return <Redirect to="/Results" />;
+    }
+
     return (
       <div className="Homepage">
         <h1 className="App-title">COUNTERPOINTS</h1>
@@ -43,8 +51,17 @@ export default class Homepage extends React.Component {
         <br />
         <TextField
           margin="normal"
+          defaultValue={this.props.currentTopic}
           onChange={e => this.props.updateTopic(e.target.value)}
           disabled={this.props.currentOption === ""}
+          onKeyPress={ev => {
+            if (ev.key === "Enter") {
+              this.setState(() => ({
+                enterPressed: true
+              }));
+              ev.preventDefault();
+            }
+          }}
         />
         <Link
           to="/Results"
