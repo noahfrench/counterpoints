@@ -75,11 +75,15 @@ export default class Homepage extends React.Component {
           </IconButton>
         </Link>
         <br />
-        <a className="News-Link" href="https://newsapi.org/">
+        <a className="News-Link" href="https://newsapi.org/" target="_blank">
           Powered by NewsAPI.org
         </a>
         <br />
-        <a className="News-Link" href="http://translate.yandex.com/">
+        <a
+          className="News-Link"
+          href="http://translate.yandex.com/"
+          target="_blank"
+        >
           Powered by Yandex.Translate
         </a>
       </div>
