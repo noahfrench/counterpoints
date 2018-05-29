@@ -1,8 +1,19 @@
 import React, { Component } from "react";
-import "./App.css";
-import axios from "axios";
 
-export default class GlobalSources extends Component {
+import axios from "axios";
+import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+
+const styles = theme => ({
+  paper1: {
+    height: 120,
+    width: 800,
+    padding: 8
+  }
+});
+class GlobalSources extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,7 +72,7 @@ export default class GlobalSources extends Component {
                 result +
                 "&sources=" +
                 outlet.abrv +
-                "&apiKey=f04b31d91c014184be4a785e6301b4bf"
+                "&apiKey=6fef8bd638b646a8a685a0560ce89f0d"
             )
             .then(response => {
               let arr1 = response.data.articles;
@@ -81,21 +92,43 @@ export default class GlobalSources extends Component {
         });
     }
   }
+
   render() {
+    const { classes } = this.props;
     return (
-      <ul>
-        {this.state.middle.map(article => (
-          <li>
-            Title: {article.title}
-            <br />
-            Source: {article.source.id}
-            <br />
-            URL: <a href={article.url}>{article.url}</a>
-            <br />
-            <img src={article.urlToImage} height="100" />
-          </li>
-        ))}
-      </ul>
+      <center>
+        <Grid container spacing={16}>
+          <Grid item xs={12}>
+            {this.state.middle.map(article => (
+              <Paper className={classes.paper1}>
+                <Grid container wrap="nowrap" spacing={16} justify="center">
+                  <Grid item zeroMinWidth>
+                    <img src={article.urlToImage} width="170" />
+                  </Grid>
+                  <Grid item xs zeroMinWidth>
+                    <Typography align="left" variant="headline" noWrap>
+                      {article.title}
+                    </Typography>
+
+                    <Typography align="left" noWrap variant="subheading">
+                      {article.source.name}
+                    </Typography>
+
+                    <Typography align="left" noWrap>
+                      Date: {article.publishedAt.substring(0, 10)}
+                    </Typography>
+
+                    <Typography noWrap align="left" noWrap>
+                      <a href={article.url}>{article.url}</a>
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Paper>
+            ))}
+          </Grid>
+        </Grid>
+      </center>
     );
   }
 }
+export default withStyles(styles)(GlobalSources);
