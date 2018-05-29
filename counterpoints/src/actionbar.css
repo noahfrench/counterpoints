@@ -1,0 +1,22 @@
+.ActionBar {
+  white-space: nowrap;
+}
+
+.ActionBar-title {
+  font-weight: lighter;
+  font-size: 2.2em;
+  margin-right: 10px;
+  margin-left: 9px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.ActionBar-label-text {
+  margin-left: 15px;
+}
+
+.ActionBar-search-bar {
+  margin-left: 12px;
+  margin-top: 0px;
+  display: inline-block;
+}
