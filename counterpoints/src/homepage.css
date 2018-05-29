@@ -1,0 +1,17 @@
+.Homepage {
+  text-align: center;
+}
+
+.App-title {
+  margin-top: 175px;
+  font-size: 4.5em;
+  font-weight: lighter;
+}
+
+.Label-text {
+  margin-left: 50px;
+}
+
+.Paper-object {
+  color: "red";
+}
