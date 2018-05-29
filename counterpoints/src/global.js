@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import Pic from "./pic.js";
 
 const styles = theme => ({
   paper1: {
@@ -72,7 +73,7 @@ class GlobalSources extends Component {
                 result +
                 "&sources=" +
                 outlet.abrv +
-                "&apiKey=6fef8bd638b646a8a685a0560ce89f0d"
+                "&apiKey=f04b31d91c014184be4a785e6301b4bf"
             )
             .then(response => {
               let arr1 = response.data.articles;
@@ -103,7 +104,7 @@ class GlobalSources extends Component {
               <Paper className={classes.paper1}>
                 <Grid container wrap="nowrap" spacing={16} justify="center">
                   <Grid item zeroMinWidth>
-                    <img src={article.urlToImage} width="170" />
+                    <Pic url={article.urlToImage} />
                   </Grid>
                   <Grid item xs zeroMinWidth>
                     <Typography align="left" variant="headline" noWrap>
