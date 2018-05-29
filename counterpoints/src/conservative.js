@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Pic from "./pic.js";
+import ArticleTile from "./articleTile.js";
 
 const styles = theme => ({
   paper1: {
@@ -65,31 +66,7 @@ class ConservativeSources extends Component {
         <Grid container spacing={16}>
           <Grid item xs={12}>
             {this.state.middle.map(article => (
-              <Paper className={classes.paper1}>
-                <Grid container wrap="nowrap" spacing={16} justify="center">
-                  <Grid item zeroMinWidth>
-                    <Pic url={article.urlToImage} />
-                  </Grid>
-                  <Grid item xs zeroMinWidth>
-                    <Typography align="left" variant="headline" noWrap>
-                      {" "}
-                      {article.title}
-                    </Typography>
-
-                    <Typography align="left" noWrap variant="subheading">
-                      {article.source.name}
-                    </Typography>
-
-                    <Typography align="left" noWrap>
-                      Date: {article.publishedAt.substring(0, 10)}
-                    </Typography>
-
-                    <Typography noWrap align="left">
-                      <a href={article.url}>{article.url}</a>
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Paper>
+              <ArticleTile article={article} />
             ))}
           </Grid>
         </Grid>
