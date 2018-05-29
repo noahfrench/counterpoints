@@ -15,58 +15,39 @@ class App extends React.Component {
     };
   }
 
-  refreshPage = e => {
-    e.preventDefault();
-    this.forceUpdate();
-    console.log(this.props.topic);
-    console.log("Page is refreshed!");
-  };
-
   render() {
     if (this.props.option === "global") {
       return (
-        <div>
-          <ActionBar
+        <ul>
+          <GlobalSources
             topic={this.props.topic}
             option={this.props.option}
             updateTopic={this.props.updateTopic}
             updateOption={this.props.updateOption}
-            refreshPage={this.refreshPage}
           />
-          <ul>
-            <GlobalSources topic={this.props.topic} />
-          </ul>
-        </div>
+        </ul>
       );
     } else if (this.props.option === "conservative") {
       return (
-        <div>
-          <ActionBar
+        <ul>
+          <ConservativeSources
             topic={this.props.topic}
             option={this.props.option}
             updateTopic={this.props.updateTopic}
             updateOption={this.props.updateOption}
-            refreshPage={this.refreshPage}
           />
-          <ul>
-            <ConservativeSources topic={this.props.topic} />
-          </ul>
-        </div>
+        </ul>
       );
     } else {
       return (
-        <div>
-          <ActionBar
+        <ul>
+          <LiberalSources
             topic={this.props.topic}
             option={this.props.option}
             updateTopic={this.props.updateTopic}
             updateOption={this.props.updateOption}
-            refreshPage={this.refreshPage}
           />
-          <ul>
-            <LiberalSources topic={this.props.topic} />
-          </ul>
-        </div>
+        </ul>
       );
     }
   }

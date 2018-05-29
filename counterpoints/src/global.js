@@ -7,6 +7,7 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Pic from "./pic.js";
 import ArticleTile from "./articleTile.js";
+import ActionBar from "./actionbar.js";
 
 const styles = theme => ({
   paper1: {
@@ -54,6 +55,11 @@ class GlobalSources extends Component {
     };
   }
 
+  refreshPage = e => {
+    e.preventDefault();
+    this.componentDidMount();
+  };
+
   componentDidMount() {
     let want = [];
     for (let j = 0; j < 13; j++) {
@@ -98,15 +104,25 @@ class GlobalSources extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <center>
-        <Grid container spacing={16}>
-          <Grid item xs={12}>
-            {this.state.middle.map(article => (
-              <ArticleTile article={article} />
-            ))}
+      <div>
+        <ActionBar
+          topic={this.props.topic}
+          option={this.props.option}
+          updateTopic={this.props.updateTopic}
+          updateOption={this.props.updateOption}
+          refreshPage={this.refreshPage}
+        />
+        <br />
+        <center>
+          <Grid container spacing={16}>
+            <Grid item xs={12}>
+              {this.state.middle.map(article => (
+                <ArticleTile article={article} />
+              ))}
+            </Grid>
           </Grid>
-        </Grid>
-      </center>
+        </center>
+      </div>
     );
   }
 }
