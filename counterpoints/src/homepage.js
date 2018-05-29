@@ -9,6 +9,7 @@ import Paper from "@material-ui/core/Paper";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
 import FormLabel from "@material-ui/core/FormLabel";
+import Typography from "@material-ui/core";
 
 export default class Homepage extends React.Component {
   state = {
@@ -73,6 +74,14 @@ export default class Homepage extends React.Component {
             <SearchIcon />
           </IconButton>
         </Link>
+        <br />
+        <a className="News-Link" href="https://newsapi.org/">
+          Powered by NewsAPI.org
+        </a>
+        <br />
+        <a className="News-Link" href="http://translate.yandex.com/">
+          Powered by Yandex.Translate
+        </a>
       </div>
     );
   }
