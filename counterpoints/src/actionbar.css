@@ -3,10 +3,9 @@
 }
 
 .ActionBar-title {
-  font-weight: lighter;
-  font-size: 2.2em;
-  margin-right: 10px;
-  margin-left: 9px;
+  font-weight: 200;
+  font-size: 2.4em;
+  margin-left: 0px;
   margin-bottom: 0px;
   margin-top: 0px;
 }
@@ -17,7 +16,7 @@
 }
 
 .ActionBar-search-bar {
-  margin-left: 12px;
+  margin-left: 5px;
   margin-top: 0px;
   display: inline-block;
 }
@@ -28,7 +27,7 @@ a {
 }
 
 a:hover {
-  color: rgb(223, 9, 87);
+  color: rgb(225, 0, 80);
   text-decoration: none;
 }
 

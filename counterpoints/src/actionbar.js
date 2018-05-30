@@ -12,18 +12,16 @@ import Paper from "@material-ui/core/Paper";
 import "./actionbar.css";
 
 export default class ActionBar extends React.Component {
+  handleHomeClick(e) {
+    this.props.updateOption("");
+    this.props.updateTopic("");
+  }
+
   render() {
     return (
       <div className="ActionBar">
-        <h1 className="ActionBar-title">
-          <Link
-            to="/Main"
-            onClick={e =>
-              this.props.currentTopic === "" ? e.preventDefault() : true
-            }
-          >
-            COUNTERPOINTS
-          </Link>
+        <h1 className="ActionBar-title" onClick={e => this.handleHomeClick(e)}>
+          <Link to="/Main">COUNTERPOINTS</Link>
         </h1>
         <div className="ActionBar-search-bar">
           <TextField

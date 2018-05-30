@@ -52,12 +52,11 @@ export default class Homepage extends React.Component {
           label="conservative"
         />
         <label>
-          <b className="Instruct-text">sources</b>
+          <b className="Instruct-text">sources...</b>
         </label>
         <br />
         <br />
         <TextField
-          color="secondary"
           margin="normal"
           defaultValue={this.props.currentTopic}
           onChange={e => this.props.updateTopic(e.target.value)}
