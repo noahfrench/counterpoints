@@ -20,36 +20,36 @@ class GlobalSources extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      middle: [],
+      output: [],
       sources: [
-        { abrv: "the-new-york-times", num: 40 },
-        { abrv: "aftenposten", num: 0 },
-        { abrv: "al-jazeera-english", num: 1 },
-        { abrv: "fox-news", num: 40 },
-        { abrv: "globo", num: 2 },
-        { abrv: "la-nacion", num: 3 },
-        { abrv: "spiegel-online", num: 5 },
-        { abrv: "la-repubblica", num: 40 },
-        { abrv: "bbc-news", num: 40 },
-        { abrv: "the-times-of-india", num: 40 },
-        { abrv: "xinhua-net", num: 6 },
-        { abrv: "les-echos", num: 4 },
-        { abrv: "the-jerusalem-post", num: 40 }
+        { abrv: "the-new-york-times" },
+        { abrv: "aftenposten" },
+        { abrv: "al-jazeera-english" },
+        { abrv: "fox-news" },
+        { abrv: "globo" },
+        { abrv: "la-nacion" },
+        { abrv: "spiegel-online" },
+        { abrv: "la-repubblica" },
+        { abrv: "bbc-news" },
+        { abrv: "the-times-of-india" },
+        { abrv: "xinhua-net" },
+        { abrv: "les-echos" },
+        { abrv: "the-jerusalem-post" }
       ],
       langs: [
-        { code: "en", word: "" },
-        { code: "no", word: "" },
-        { code: "en", word: "" },
-        { code: "en", word: "" },
-        { code: "pt", word: "" },
-        { code: "es", word: "" },
-        { code: "de", word: "" },
-        { code: "it", word: "" },
-        { code: "en", word: "" },
-        { code: "en", word: "" },
-        { code: "zh", word: "" },
-        { code: "fr", word: "" },
-        { code: "en", word: "" }
+        { code: "en" },
+        { code: "no" },
+        { code: "en" },
+        { code: "en" },
+        { code: "pt" },
+        { code: "es" },
+        { code: "de" },
+        { code: "it" },
+        { code: "en" },
+        { code: "en" },
+        { code: "zh" },
+        { code: "fr" },
+        { code: "en" }
       ],
       count: 0
     };
@@ -61,7 +61,7 @@ class GlobalSources extends Component {
   };
 
   componentDidMount() {
-    let want = [];
+    let desiredArticles = [];
     for (let j = 0; j < 13; j++) {
       axios
         .get(
@@ -80,16 +80,17 @@ class GlobalSources extends Component {
                 result +
                 "&sources=" +
                 outlet.abrv +
-                "&apiKey=f04b31d91c014184be4a785e6301b4bf"
+                "&apiKey=" +
+                this.props.apiKey
             )
             .then(response => {
-              let arr1 = response.data.articles;
-              if (arr1[0] === undefined) {
+              let allOutletArt = response.data.articles;
+              if (allOutletArt[0] === undefined) {
                 return null;
               }
-              want.push(arr1[0]);
-              this.setState({ middle: want });
-              //console.log(this.state.middle);
+              desiredArticles.push(allOutletArt[0]);
+              this.setState({ output: desiredArticles });
+              //console.log(this.state.output);
             })
             .catch(err => {
               console.log(err);
@@ -116,7 +117,7 @@ class GlobalSources extends Component {
         <center>
           <Grid container spacing={16}>
             <Grid item xs={12}>
-              {this.state.middle.map(article => (
+              {this.state.output.map(article => (
                 <ArticleTile article={article} />
               ))}
             </Grid>

@@ -7,7 +7,7 @@ export default class Translate extends Component {
     super(props);
     this.state = {
       output: "",
-      arr: []
+      info: []
     };
   }
   //props: phrase, language
@@ -22,16 +22,16 @@ export default class Translate extends Component {
       )
       .then(response => {
         console.log(response);
-        let arr1 = response.data;
+        let results = response.data;
         this.setState({
-          arr: arr1
+          info: results
         });
       })
       .catch(err => {
         console.log(err);
       });
-    let abc = this.state.arr[0];
-    this.setState({ output: abc.text });
+    let translation = this.state.info[0];
+    this.setState({ output: translation.text });
   }
   render() {
     return this.state.output;

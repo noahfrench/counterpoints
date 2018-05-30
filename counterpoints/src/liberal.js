@@ -21,7 +21,7 @@ class LiberalSources extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      middle: [],
+      output: [],
       sources: [
         { abrv: "the-new-york-times" },
         { abrv: "the-washington-post" },
@@ -38,7 +38,7 @@ class LiberalSources extends Component {
   };
 
   componentDidMount() {
-    let want = [];
+    let desiredArticles = [];
     for (let i = 0; i < 5; i++) {
       let outlet = this.state.sources[i];
       axios
@@ -47,18 +47,19 @@ class LiberalSources extends Component {
             this.props.topic +
             "&sources=" +
             outlet.abrv +
-            "&apiKey=f04b31d91c014184be4a785e6301b4bf"
+            "&apiKey=" +
+            this.props.apiKey
         )
         .then(response => {
-          let arr1 = response.data.articles;
-          if (arr1[0] === undefined || arr1[1] === undefined) {
+          let allOutletArt = response.data.articles;
+          if (allOutletArt[0] === undefined || allOutletArt[1] === undefined) {
             return null;
           }
-          want.push(arr1[0]);
-          want.push(arr1[1]);
-          console.log(want);
-          this.setState({ middle: want });
-          console.log(this.state.middle);
+          desiredArticles.push(allOutletArt[0]);
+          desiredArticles.push(allOutletArt[1]);
+          console.log(desiredArticles);
+          this.setState({ output: desiredArticles });
+          console.log(this.state.output);
         })
         .catch(err => {
           console.log(err);
@@ -81,7 +82,7 @@ class LiberalSources extends Component {
         <center>
           <Grid container spacing={16}>
             <Grid item xs={12}>
-              {this.state.middle.map(article => (
+              {this.state.output.map(article => (
                 <ArticleTile article={article} />
               ))}
             </Grid>

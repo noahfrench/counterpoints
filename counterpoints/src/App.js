@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      middle: []
+      apiKey: "f04b31d91c014184be4a785e6301b4bf"
     };
   }
 
@@ -24,6 +24,7 @@ class App extends React.Component {
             option={this.props.option}
             updateTopic={this.props.updateTopic}
             updateOption={this.props.updateOption}
+            apiKey={this.state.apiKey}
           />
         </ul>
       );
@@ -35,6 +36,7 @@ class App extends React.Component {
             option={this.props.option}
             updateTopic={this.props.updateTopic}
             updateOption={this.props.updateOption}
+            apiKey={this.state.apiKey}
           />
         </ul>
       );
@@ -46,6 +48,7 @@ class App extends React.Component {
             option={this.props.option}
             updateTopic={this.props.updateTopic}
             updateOption={this.props.updateOption}
+            apiKey={this.state.apiKey}
           />
         </ul>
       );

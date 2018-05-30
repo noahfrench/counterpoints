@@ -36,7 +36,9 @@ class ArticleTile extends Component {
             </Typography>
 
             <Typography noWrap align="left" noWrap>
-              <a href={this.props.article.url}>{this.props.article.url}</a>
+              <a href={this.props.article.url} target="_blank">
+                {this.props.article.url}
+              </a>
             </Typography>
           </Grid>
         </Grid>
