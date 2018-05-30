@@ -23,7 +23,10 @@ class LiberalSources extends Component {
         { abrv: "the-washington-post" },
         { abrv: "politico" },
         { abrv: "cnn" },
-        { abrv: "abc-news" }
+        { abrv: "abc-news" },
+        { abrv: "the-economist" },
+        { abrv: "the-huffington-post" },
+        { abrv: "msnbc" }
       ]
     };
   }
@@ -35,7 +38,7 @@ class LiberalSources extends Component {
 
   componentDidMount() {
     let desiredArticles = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < this.state.sources.length; i++) {
       let outlet = this.state.sources[i];
       axios
         .get(

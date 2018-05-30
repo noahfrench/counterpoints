@@ -30,7 +30,9 @@ class GlobalSources extends Component {
         { abrv: "the-times-of-india", place: "India" },
         { abrv: "xinhua-net", place: "China" },
         { abrv: "les-echos", place: "France" },
-        { abrv: "the-jerusalem-post", place: "Jerusalem" }
+        { abrv: "the-jerusalem-post", place: "Jerusalem" },
+        { abrv: "the-irish-times", place: "Ireland" },
+        { abrv: "lenta", place: "Russia" }
       ],
       langs: [
         { code: "en" },
@@ -45,7 +47,9 @@ class GlobalSources extends Component {
         { code: "en" },
         { code: "zh" },
         { code: "fr" },
-        { code: "en" }
+        { code: "en" },
+        { code: "en" },
+        { code: "ru" }
       ],
       count: 0
     };
@@ -58,7 +62,7 @@ class GlobalSources extends Component {
 
   componentDidMount() {
     let desiredArticles = [];
-    for (let j = 0; j < 13; j++) {
+    for (let j = 0; j < this.state.sources.length; j++) {
       axios
         .get(
           "https://translate.yandex.net/api/v1.5/tr.json/translate?text=" +
