@@ -24,7 +24,8 @@ class ConservativeSources extends Component {
         { abrv: "the-american-conservative" },
         { abrv: "breitbart-news" },
         { abrv: "the-wall-street-journal" },
-        { abrv: "the-washington-times" }
+        { abrv: "the-washington-times" },
+        { abrv: "national-review" }
       ]
     };
   }
@@ -37,7 +38,7 @@ class ConservativeSources extends Component {
   componentDidMount() {
     let desiredArticles = [];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < this.state.sources.length; i++) {
       let outlet = this.state.sources[i];
       axios
         .get(

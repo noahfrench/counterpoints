@@ -10,7 +10,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
       apiKey: "bd4fea718c13431f8e8e138aa47e3561"
+=======
+      apiKey: "f04b31d91c014184be4a785e6301b4bf"
+>>>>>>> 49e789d02a5b8faf8415e4b3121b540e6ac4d834
     };
   }
 
