@@ -15,7 +15,16 @@ export default class ActionBar extends React.Component {
   render() {
     return (
       <div className="ActionBar">
-        <h1 className="ActionBar-title">COUNTERPOINTS</h1>
+        <h1 className="ActionBar-title">
+          <Link
+            to="/Main"
+            onClick={e =>
+              this.props.currentTopic === "" ? e.preventDefault() : true
+            }
+          >
+            COUNTERPOINTS
+          </Link>
+        </h1>
         <div className="ActionBar-search-bar">
           <TextField
             margin="normal"
