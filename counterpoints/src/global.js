@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Pic from "./pic.js";
-import ArticleTile from "./articleTile.js";
+import ArticleTile1 from "./articleTile1.js";
 import ActionBar from "./actionbar.js";
 
 const styles = theme => ({
@@ -22,19 +22,19 @@ class GlobalSources extends Component {
     this.state = {
       output: [],
       sources: [
-        { abrv: "the-new-york-times" },
-        { abrv: "aftenposten" },
-        { abrv: "al-jazeera-english" },
-        { abrv: "fox-news" },
-        { abrv: "globo" },
-        { abrv: "la-nacion" },
-        { abrv: "spiegel-online" },
-        { abrv: "la-repubblica" },
-        { abrv: "bbc-news" },
-        { abrv: "the-times-of-india" },
-        { abrv: "xinhua-net" },
-        { abrv: "les-echos" },
-        { abrv: "the-jerusalem-post" }
+        { abrv: "the-new-york-times", place: "United States" },
+        { abrv: "aftenposten", place: "Norway" },
+        { abrv: "al-jazeera-english", place: "Middle East" },
+        { abrv: "fox-news", place: "United States" },
+        { abrv: "globo", place: "Brazil" },
+        { abrv: "la-nacion", place: "Argentina" },
+        { abrv: "spiegel-online", place: "Germany" },
+        { abrv: "la-repubblica", place: "Italy" },
+        { abrv: "bbc-news", place: "Great Britain" },
+        { abrv: "the-times-of-india", place: "India" },
+        { abrv: "xinhua-net", place: "China" },
+        { abrv: "les-echos", place: "France" },
+        { abrv: "the-jerusalem-post", place: "Jerusalem" }
       ],
       langs: [
         { code: "en" },
@@ -66,11 +66,12 @@ class GlobalSources extends Component {
       axios
         .get(
           "https://translate.yandex.net/api/v1.5/tr.json/translate?text=" +
-            this.props.topic +
+            this.props.topic.replace("#", "") +
             "&lang=en-" +
             this.state.langs[j].code +
             "&key=trnsl.1.1.20180524T202355Z.be1de689c215054b.b0fa44dcd929936ea64480d4a598bba3cc7f9029"
         )
+        //create object that stores language code with output
         .then(response => {
           let result = response.data.text;
           let outlet = this.state.sources[j];
@@ -88,7 +89,12 @@ class GlobalSources extends Component {
               if (allOutletArt[0] === undefined) {
                 return null;
               }
-              desiredArticles.push(allOutletArt[0]);
+              let obj = {
+                art: allOutletArt[0],
+                code: this.state.langs[j].code,
+                place: this.state.sources[j].place
+              };
+              desiredArticles.push(obj);
               this.setState({ output: desiredArticles });
               //console.log(this.state.output);
             })
@@ -118,7 +124,7 @@ class GlobalSources extends Component {
           <Grid container spacing={16}>
             <Grid item xs={12}>
               {this.state.output.map(article => (
-                <ArticleTile article={article} />
+                <ArticleTile1 article={article} />
               ))}
             </Grid>
           </Grid>

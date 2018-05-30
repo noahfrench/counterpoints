@@ -39,12 +39,13 @@ class ConservativeSources extends Component {
 
   componentDidMount() {
     let desiredArticles = [];
+
     for (let i = 0; i < 5; i++) {
       let outlet = this.state.sources[i];
       axios
         .get(
           "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
+            this.props.topic.replace("#", "") +
             "&sources=" +
             outlet.abrv +
             "&apiKey=" +

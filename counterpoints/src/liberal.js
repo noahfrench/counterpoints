@@ -44,7 +44,7 @@ class LiberalSources extends Component {
       axios
         .get(
           "https://newsapi.org/v2/everything?q=" +
-            this.props.topic +
+            this.props.topic.replace("#", "") +
             "&sources=" +
             outlet.abrv +
             "&apiKey=" +
