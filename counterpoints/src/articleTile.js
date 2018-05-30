@@ -32,7 +32,7 @@ class ArticleTile extends Component {
             </Typography>
 
             <Typography align="left" noWrap>
-              Date: {this.props.article.publishedAt.substring(0, 10)}
+              {this.props.article.publishedAt.substring(0, 10)}
             </Typography>
 
             <Typography noWrap align="left" noWrap>

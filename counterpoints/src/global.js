@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Pic from "./pic.js";
-import ArticleTile from "./articleTile.js";
+import ArticleTile1 from "./articleTile1.js";
 import ActionBar from "./actionbar.js";
 
 const styles = theme => ({
@@ -71,6 +71,7 @@ class GlobalSources extends Component {
             this.state.langs[j].code +
             "&key=trnsl.1.1.20180524T202355Z.be1de689c215054b.b0fa44dcd929936ea64480d4a598bba3cc7f9029"
         )
+        //create object that stores language code with output
         .then(response => {
           let result = response.data.text;
           let outlet = this.state.sources[j];
@@ -88,7 +89,11 @@ class GlobalSources extends Component {
               if (allOutletArt[0] === undefined) {
                 return null;
               }
-              desiredArticles.push(allOutletArt[0]);
+              let obj = {
+                art: allOutletArt[0],
+                code: this.state.langs[j].code
+              };
+              desiredArticles.push(obj);
               this.setState({ output: desiredArticles });
               //console.log(this.state.output);
             })
@@ -118,7 +123,7 @@ class GlobalSources extends Component {
           <Grid container spacing={16}>
             <Grid item xs={12}>
               {this.state.output.map(article => (
-                <ArticleTile article={article} />
+                <ArticleTile1 article={article} />
               ))}
             </Grid>
           </Grid>
