@@ -9,7 +9,7 @@ import Paper from "@material-ui/core/Paper";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
 import FormLabel from "@material-ui/core/FormLabel";
-import Typography from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 
 export default class Homepage extends React.Component {
   state = {
@@ -24,6 +24,9 @@ export default class Homepage extends React.Component {
     return (
       <div className="Homepage">
         <h1 className="App-title">COUNTERPOINTS</h1>
+        <label>
+          <b className="Instruct-text1">Show articles from</b>
+        </label>
         <label className="Label-text">Global</label>
         <Radio
           checked={this.props.currentOption === "global"}
@@ -48,6 +51,9 @@ export default class Homepage extends React.Component {
           onChange={e => this.props.updateOption(e.target.value)}
           label="conservative"
         />
+        <label>
+          <b className="Instruct-text"> outlets about... </b>
+        </label>
         <br />
         <br />
         <TextField
