@@ -66,7 +66,7 @@ class GlobalSources extends Component {
       axios
         .get(
           "https://translate.yandex.net/api/v1.5/tr.json/translate?text=" +
-            this.props.topic +
+            this.props.topic.replace("#", "") +
             "&lang=en-" +
             this.state.langs[j].code +
             "&key=trnsl.1.1.20180524T202355Z.be1de689c215054b.b0fa44dcd929936ea64480d4a598bba3cc7f9029"
