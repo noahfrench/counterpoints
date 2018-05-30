@@ -61,6 +61,9 @@ class ArticleTile1 extends Component {
             <Typography align="left" noWrap>
               {this.props.article.art.publishedAt.substring(0, 10)}
             </Typography>
+            <Typography align="left" noWrap>
+              {this.props.article.place}
+            </Typography>
 
             <Typography noWrap align="left" noWrap>
               <a href={this.props.article.art.url} target="_blank">

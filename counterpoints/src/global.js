@@ -22,19 +22,19 @@ class GlobalSources extends Component {
     this.state = {
       output: [],
       sources: [
-        { abrv: "the-new-york-times" },
-        { abrv: "aftenposten" },
-        { abrv: "al-jazeera-english" },
-        { abrv: "fox-news" },
-        { abrv: "globo" },
-        { abrv: "la-nacion" },
-        { abrv: "spiegel-online" },
-        { abrv: "la-repubblica" },
-        { abrv: "bbc-news" },
-        { abrv: "the-times-of-india" },
-        { abrv: "xinhua-net" },
-        { abrv: "les-echos" },
-        { abrv: "the-jerusalem-post" }
+        { abrv: "the-new-york-times", place: "United States" },
+        { abrv: "aftenposten", place: "Norway" },
+        { abrv: "al-jazeera-english", place: "Middle East" },
+        { abrv: "fox-news", place: "United States" },
+        { abrv: "globo", place: "Brazil" },
+        { abrv: "la-nacion", place: "Argentina" },
+        { abrv: "spiegel-online", place: "Germany" },
+        { abrv: "la-repubblica", place: "Italy" },
+        { abrv: "bbc-news", place: "Great Britain" },
+        { abrv: "the-times-of-india", place: "India" },
+        { abrv: "xinhua-net", place: "China" },
+        { abrv: "les-echos", place: "France" },
+        { abrv: "the-jerusalem-post", place: "Jerusalem" }
       ],
       langs: [
         { code: "en" },
@@ -91,7 +91,8 @@ class GlobalSources extends Component {
               }
               let obj = {
                 art: allOutletArt[0],
-                code: this.state.langs[j].code
+                code: this.state.langs[j].code,
+                place: this.state.sources[j].place
               };
               desiredArticles.push(obj);
               this.setState({ output: desiredArticles });
