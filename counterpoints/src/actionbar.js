@@ -6,7 +6,13 @@ import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
 import "./actionbar.css";
 
+/*
+Implentation for the "bar" component that appears at the top of the results page.
+Contains a logo that links back to the homepage, a search field, search button, and 
+Radio buttons to switch between the three news outlet lists.
+*/
 export default class ActionBar extends React.Component {
+  // If the "home button" is clicked, reset the topic and option (global/liberal/conservative)
   handleHomeClick(e) {
     this.props.updateOption("");
     this.props.updateTopic("");

@@ -4,6 +4,7 @@ import App from "./App.js";
 import Homepage from "./homepage.js";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 
+// Component that routes betwen the two main pages in the app: the homepage ("/Main") and the results page ("/Results")
 export default class RouteA extends Component {
   constructor() {
     super();
@@ -18,6 +19,9 @@ export default class RouteA extends Component {
     });
   }
 
+  // Display the homepage ("/Main") by default.
+  // Pass down the attributes of the current states to Homepage and App
+  // Pass down a method to set the state to Homepage and App
   render() {
     return (
       <BrowserRouter>
@@ -27,10 +31,10 @@ export default class RouteA extends Component {
             path="/Main"
             render={() => (
               <Homepage
+                topic={this.state.topic}
+                option={this.state.option}
                 updateTopic={newVal => this.updateField("topic", newVal)}
                 updateOption={newVal => this.updateField("option", newVal)}
-                currentOption={this.state.option}
-                currentTopic={this.state.topic}
               />
             )}
           />

@@ -24,7 +24,7 @@ export default class Homepage extends React.Component {
         </label>
         <label className="Label-text">Global</label>
         <Radio
-          checked={this.props.currentOption === "global"}
+          checked={this.props.option === "global"}
           name="global-button"
           value="global"
           onChange={e => this.props.updateOption(e.target.value)}
@@ -32,7 +32,7 @@ export default class Homepage extends React.Component {
         />
         <label className="Label-text">Liberal</label>
         <Radio
-          checked={this.props.currentOption === "liberal"}
+          checked={this.props.option === "liberal"}
           name="liberal-button"
           value="liberal"
           onChange={e => this.props.updateOption(e.target.value)}
@@ -40,7 +40,7 @@ export default class Homepage extends React.Component {
         />
         <label className="Label-text">Conservative</label>
         <Radio
-          checked={this.props.currentOption === "conservative"}
+          checked={this.props.option === "conservative"}
           name="conservative-button"
           value="conservative"
           onChange={e => this.props.updateOption(e.target.value)}
@@ -53,9 +53,9 @@ export default class Homepage extends React.Component {
         <br />
         <TextField
           margin="normal"
-          defaultValue={this.props.currentTopic}
+          defaultValue={this.props.topic}
           onChange={e => this.props.updateTopic(e.target.value)}
-          disabled={this.props.currentOption === ""}
+          disabled={this.props.option === ""}
           onKeyPress={ev => {
             if (ev.key === "Enter") {
               this.setState(() => ({
@@ -67,11 +67,9 @@ export default class Homepage extends React.Component {
         />
         <Link
           to="/Results"
-          onClick={e =>
-            this.props.currentTopic === "" ? e.preventDefault() : true
-          }
+          onClick={e => (this.props.topic === "" ? e.preventDefault() : true)}
         >
-          <IconButton disabled={this.props.currentTopic === ""}>
+          <IconButton disabled={this.props.topic === ""}>
             <SearchIcon />
           </IconButton>
         </Link>

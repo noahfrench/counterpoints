@@ -4,15 +4,17 @@ import GlobalSources from "./global.js";
 import ConservativeSources from "./conservative.js";
 import LiberalSources from "./liberal.js";
 
-//https://translate.yandex.net/api/v1.5/tr.json/translate?text=immigration&lang=en-ar&key=trnsl.1.1.20180524T202355Z.be1de689c215054b.b0fa44dcd929936ea64480d4a598bba3cc7f9029
+// Component that controls the Results page
 class App extends React.Component {
+  // Props passed down from Route.js: topic, option, updateTopic(newVal), updateOption(newVal)
   constructor(props) {
     super(props);
     this.state = {
-      apiKey: "cfd349f1cd3648b6980bac7cea33ce1e"
+      apiKey: "bd4fea718c13431f8e8e138aa47e3561"
     };
   }
 
+  // Render either GlobalSources, ConservativeSources, or LiberalSources depending on the user's choice
   render() {
     if (this.props.option === "global") {
       return (
