@@ -8,8 +8,8 @@ import Pic from "./pic.js";
 
 const styles = theme => ({
   paper1: {
-    height: 120,
-    width: 800,
+    height: 100,
+    width: 1100,
     padding: 8
   }
 });
@@ -20,11 +20,15 @@ class ArticleTile extends Component {
       <Paper className={classes.paper1}>
         <Grid container wrap="nowrap" spacing={16} justify="center">
           <Grid item zeroMinWidth>
-            <Pic url={this.props.article.urlToImage} />
+            <div>
+              <Pic url={this.props.article.urlToImage} />
+            </div>
           </Grid>
           <Grid item xs zeroMinWidth>
             <Typography align="left" variant="headline" noWrap>
-              {this.props.article.title}
+              <a href={this.props.article.url} target="_blank">
+                {this.props.article.title}
+              </a>
             </Typography>
 
             <Typography align="left" noWrap variant="subheading">
@@ -33,12 +37,6 @@ class ArticleTile extends Component {
 
             <Typography align="left" noWrap>
               {this.props.article.publishedAt.substring(0, 10)}
-            </Typography>
-
-            <Typography noWrap align="left" noWrap>
-              <a href={this.props.article.url} target="_blank">
-                {this.props.article.url}
-              </a>
             </Typography>
           </Grid>
         </Grid>
