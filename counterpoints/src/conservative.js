@@ -1,3 +1,4 @@
+//component for conservative sources
 import React, { Component } from "react";
 
 import axios from "axios";
@@ -18,7 +19,9 @@ class ConservativeSources extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      //output will hold the article results that will be rendered
       output: [],
+      //sources holds the api abbreviations associated with each news outlet
       sources: [
         { abrv: "fox-news" },
         { abrv: "the-american-conservative" },
@@ -29,17 +32,19 @@ class ConservativeSources extends Component {
       ]
     };
   }
-
+  //re-call componentDidMount to do a new search on results page
   refreshPage = e => {
     e.preventDefault();
     this.componentDidMount();
   };
 
   componentDidMount() {
+    //desiredArticles stores the results pulled from the large array for each news outlet
     let desiredArticles = [];
-
+    //iterate through each news outlet and make the api call
     for (let i = 0; i < this.state.sources.length; i++) {
       let outlet = this.state.sources[i];
+      //api call to get articles with provided topic
       axios
         .get(
           "https://newsapi.org/v2/everything?q=" +
@@ -50,10 +55,13 @@ class ConservativeSources extends Component {
             this.props.apiKey
         )
         .then(response => {
+          //store array of all articles from an outlet
           let allOutletArt = response.data.articles;
+          //return null if no articles are returned by api call
           if (allOutletArt[0] === undefined || allOutletArt[1] === undefined) {
             return null;
           }
+          //push the first two articles for an outlet to desiredArticles array
           desiredArticles.push(allOutletArt[0]);
           desiredArticles.push(allOutletArt[1]);
           console.log(desiredArticles);

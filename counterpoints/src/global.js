@@ -1,3 +1,5 @@
+//component for global sources
+
 import React, { Component } from "react";
 import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
@@ -17,6 +19,7 @@ class GlobalSources extends Component {
     super(props);
     this.state = {
       output: [],
+      //sources holds the api abbreviations associated with each news outlet, and their location
       sources: [
         { abrv: "the-new-york-times", place: "United States" },
         { abrv: "aftenposten", place: "Norway" },
@@ -34,6 +37,7 @@ class GlobalSources extends Component {
         { abrv: "the-irish-times", place: "Ireland" },
         { abrv: "lenta", place: "Russia" }
       ],
+      //holds language codes for language associated with each news outlet
       langs: [
         { code: "en" },
         { code: "no" },
@@ -54,16 +58,19 @@ class GlobalSources extends Component {
       count: 0
     };
   }
-
+  //re-call componentDidMount to do a new search on results page
   refreshPage = e => {
     e.preventDefault();
     this.componentDidMount();
   };
 
   componentDidMount() {
+    //desiredArticles stores the results pulled from the large array for each news outlet
     let desiredArticles = [];
+    //iterate through each news outlet/language code and make the api call
     for (let j = 0; j < this.state.sources.length; j++) {
       axios
+        //translator api call
         .get(
           "https://translate.yandex.net/api/v1.5/tr.json/translate?text=" +
             this.props.topic.replace("#", "") +
@@ -71,10 +78,10 @@ class GlobalSources extends Component {
             this.state.langs[j].code +
             "&key=trnsl.1.1.20180524T202355Z.be1de689c215054b.b0fa44dcd929936ea64480d4a598bba3cc7f9029"
         )
-        //create object that stores language code with output
         .then(response => {
           let result = response.data.text;
           let outlet = this.state.sources[j];
+          //news outlet api call
           axios
             .get(
               "https://newsapi.org/v2/everything?q=" +
@@ -89,14 +96,15 @@ class GlobalSources extends Component {
               if (allOutletArt[0] === undefined) {
                 return null;
               }
+              //create an object with first article from a source, its langauge code and location
               let obj = {
                 art: allOutletArt[0],
                 code: this.state.langs[j].code,
                 place: this.state.sources[j].place
               };
+              //store this object
               desiredArticles.push(obj);
               this.setState({ output: desiredArticles });
-              //console.log(this.state.output);
             })
             .catch(err => {
               console.log(err);

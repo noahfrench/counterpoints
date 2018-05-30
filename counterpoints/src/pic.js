@@ -1,7 +1,9 @@
+//component to determine picture to display, and to format the picture for each article
 import React, { Component } from "react";
 
 export default class Pic extends Component {
   render() {
+    //if the urlToImage is null, put the default picture
     if (this.props.url === null) {
       return (
         <div>
@@ -15,11 +17,13 @@ export default class Pic extends Component {
           />
         </div>
       );
+      //if the urlToImage starts with http then it is likely correct, use this image url to get and render picture
     } else if (this.props.url.slice(0, 4) === "http") {
       return (
         <img src={this.props.url} alt="from-article" width="170" height="100" />
       );
-    } else {
+    } //if the urlToImage doesn't start with http then use default picture
+    else {
       return (
         <div>
           <img
