@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Pic from "./pic.js";
+import "./articleTile.css";
 
 const styles = theme => ({
   paper1: {
@@ -56,16 +57,16 @@ class ArticleTile1 extends Component {
               </a>
             </Typography>
 
-            <Typography align="left" noWrap variant="subheading">
+            <h1 className="Source-text" align="left" noWrap>
               {this.props.article.art.source.name}
-            </Typography>
+            </h1>
 
-            <Typography align="left" noWrap>
+            <h1 className="Date-text" align="left" noWrap>
               {this.props.article.art.publishedAt.substring(0, 10)}
-            </Typography>
-            <Typography align="left" noWrap>
+            </h1>
+            <h1 className="Date-text" align="left" noWrap>
               {this.props.article.place}
-            </Typography>
+            </h1>
           </Grid>
         </Grid>
       </Paper>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./articleTile.css";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -31,13 +31,13 @@ class ArticleTile extends Component {
               </a>
             </Typography>
 
-            <Typography align="left" noWrap variant="subheading">
+            <h1 className="Source-text" align="left" noWrap>
               {this.props.article.source.name}
-            </Typography>
+            </h1>
 
-            <Typography align="left" noWrap>
+            <h1 className="Date-text" align="left" noWrap>
               {this.props.article.publishedAt.substring(0, 10)}
-            </Typography>
+            </h1>
           </Grid>
         </Grid>
       </Paper>
