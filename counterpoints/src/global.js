@@ -117,6 +117,24 @@ class GlobalSources extends Component {
   }
 
   render() {
+    if (this.state.output.length === 0) {
+      return (
+        <div>
+          <ActionBar
+            topic={this.props.topic}
+            option={this.props.option}
+            updateTopic={this.props.updateTopic}
+            updateOption={this.props.updateOption}
+            refreshPage={this.refreshPage}
+          />
+          <br />
+          <center>
+            {" "}
+            No results found. Please try a different option or search word.
+          </center>
+        </div>
+      );
+    }
     return (
       <div>
         <ActionBar
