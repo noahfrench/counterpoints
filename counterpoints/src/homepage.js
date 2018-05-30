@@ -25,7 +25,7 @@ export default class Homepage extends React.Component {
       <div className="Homepage">
         <h1 className="App-title">COUNTERPOINTS</h1>
         <label>
-          <b className="Instruct-text1">Show articles from</b>
+          <b className="Instruct-text1">Show articles from:</b>
         </label>
         <label className="Label-text">Global</label>
         <Radio
@@ -52,11 +52,12 @@ export default class Homepage extends React.Component {
           label="conservative"
         />
         <label>
-          <b className="Instruct-text"> outlets about... </b>
+          <b className="Instruct-text">sources</b>
         </label>
         <br />
         <br />
         <TextField
+          color="secondary"
           margin="normal"
           defaultValue={this.props.currentTopic}
           onChange={e => this.props.updateTopic(e.target.value)}

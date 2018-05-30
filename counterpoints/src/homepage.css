@@ -10,6 +10,7 @@
 
 .Label-text {
   margin-left: 50px;
+  font-style: italic;
 }
 
 .Paper-object {
@@ -20,7 +21,9 @@
 }
 .Instruct-text {
   margin-left: 20px;
+  font-weight: 400;
 }
 .Instruct-text1 {
   margin-right: 0px;
+  font-weight: 400;
 }
