@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
 export default class Pic extends Component {
   render() {
@@ -15,7 +17,7 @@ export default class Pic extends Component {
         </div>
       );
     } else if (this.props.url.slice(0, 4) === "http") {
-      return <img src={this.props.url} width="170" />;
+      return <img src={this.props.url} width="170" height="100" />;
     } else {
       return (
         <div>
