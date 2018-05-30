@@ -1,15 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import "./homepage.css";
 import TextField from "@material-ui/core/TextField";
 import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Button from "@material-ui/core/Button";
 import { Link, Redirect } from "react-router-dom";
-import Paper from "@material-ui/core/Paper";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
-import FormLabel from "@material-ui/core/FormLabel";
-import Typography from "@material-ui/core/Typography";
 
 export default class Homepage extends React.Component {
   state = {
@@ -81,7 +76,12 @@ export default class Homepage extends React.Component {
           </IconButton>
         </Link>
         <br />
-        <a className="News-Link" href="https://newsapi.org/" target="_blank">
+        <a
+          className="News-Link"
+          href="https://newsapi.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Powered by NewsAPI.org
         </a>
         <br />
@@ -89,6 +89,7 @@ export default class Homepage extends React.Component {
           className="News-Link"
           href="http://translate.yandex.com/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Powered by Yandex.Translate
         </a>

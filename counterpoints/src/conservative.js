@@ -3,9 +3,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Pic from "./pic.js";
 import ArticleTile from "./articleTile.js";
 import ActionBar from "./actionbar.js";
 
@@ -68,7 +65,6 @@ class ConservativeSources extends Component {
     }
   }
   render() {
-    const { classes } = this.props;
     return (
       <div>
         <ActionBar

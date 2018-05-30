@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import App from "./App.js";
 import Homepage from "./homepage.js";
-import ActionBar from "./actionbar.js";
-import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 
 export default class RouteA extends Component {
   constructor() {
