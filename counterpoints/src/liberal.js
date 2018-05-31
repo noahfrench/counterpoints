@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import ArticleTile from "./articleTile.js";
 import ActionBar from "./actionbar.js";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = theme => ({
   paper1: {
@@ -86,8 +87,9 @@ class LiberalSources extends Component {
           />
           <br />
           <center>
-            {" "}
-            No results found. Please try a different option or search word.
+            <center>
+              <CircularProgress color="secondary" />
+            </center>
           </center>
         </div>
       );
