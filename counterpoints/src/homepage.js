@@ -1,12 +1,21 @@
 import React from "react";
 import "./homepage.css";
-import TextField from "@material-ui/core/TextField";
 import Radio from "@material-ui/core/Radio";
 import { Link, Redirect } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
+import { withStyles } from "@material-ui/core/styles";
+import Input from "@material-ui/core/Input";
 
-export default class Homepage extends React.Component {
+const styles = theme => ({
+  cssUnderline: {
+    "&:after": {
+      borderBottomColor: "#E10050"
+    }
+  }
+});
+
+class Homepage extends React.Component {
   state = {
     enterPressed: false
   };
@@ -15,7 +24,7 @@ export default class Homepage extends React.Component {
     if (this.state.enterPressed === true) {
       return <Redirect to="/Results" />;
     }
-
+    const { classes } = this.props;
     return (
       <div className="Homepage">
         <h1 className="App-title">COUNTERPOINTS</h1>
@@ -51,7 +60,10 @@ export default class Homepage extends React.Component {
         </label>
         <br />
         <br />
-        <TextField
+        <Input
+          classes={{
+            underline: classes.cssUnderline
+          }}
           margin="normal"
           defaultValue={this.props.topic}
           onChange={e => this.props.updateTopic(e.target.value)}
@@ -95,3 +107,4 @@ export default class Homepage extends React.Component {
     );
   }
 }
+export default withStyles(styles)(Homepage);

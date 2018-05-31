@@ -6,6 +6,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import ArticleTile1 from "./articleTile1.js";
 import ActionBar from "./actionbar.js";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = theme => ({
   paper1: {
@@ -130,8 +131,7 @@ class GlobalSources extends Component {
           />
           <br />
           <center>
-            {" "}
-            No results found. Please try a different option or search word.
+            <CircularProgress color="secondary" />
           </center>
         </div>
       );
