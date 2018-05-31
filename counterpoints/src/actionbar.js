@@ -1,17 +1,25 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
 import Radio from "@material-ui/core/Radio";
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
 import "./actionbar.css";
+import { withStyles } from "@material-ui/core/styles";
+import Input from "@material-ui/core/Input";
 
+const styles = theme => ({
+  cssUnderline: {
+    "&:after": {
+      borderBottomColor: "#E10050"
+    }
+  }
+});
 /*
 Implentation for the "bar" component that appears at the top of the results page.
 Contains a logo that links back to the homepage, a search field, search button, and 
 Radio buttons to switch between the three news outlet lists.
 */
-export default class ActionBar extends React.Component {
+class ActionBar extends React.Component {
   // If the "home button" is clicked, reset the topic and option (global/liberal/conservative)
   handleHomeClick(e) {
     this.props.updateOption("");
@@ -19,13 +27,17 @@ export default class ActionBar extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div className="ActionBar">
         <h1 className="ActionBar-title" onClick={e => this.handleHomeClick(e)}>
           <Link to="/Main">COUNTERPOINTS</Link>
         </h1>
         <div className="ActionBar-search-bar">
-          <TextField
+          <Input
+            classes={{
+              underline: classes.cssUnderline
+            }}
             margin="normal"
             defaultValue={this.props.topic}
             onChange={e => this.props.updateTopic(e.target.value)}
@@ -72,3 +84,4 @@ export default class ActionBar extends React.Component {
     );
   }
 }
+export default withStyles(styles)(ActionBar);
