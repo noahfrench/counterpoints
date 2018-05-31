@@ -31,7 +31,8 @@ class LiberalSources extends Component {
         { abrv: "the-economist" },
         { abrv: "the-huffington-post" },
         { abrv: "msnbc" }
-      ]
+      ],
+      render: false
     };
   }
 
@@ -73,9 +74,16 @@ class LiberalSources extends Component {
           console.log(err);
         });
     }
+    setTimeout(
+      function() {
+        //Start the timer
+        this.setState({ render: true }); //After 1 second, set render to true
+      }.bind(this),
+      2000
+    );
   }
   render() {
-    if (this.state.output.length === 0) {
+    if (this.state.output.length === 0 && !this.state.render) {
       return (
         <div>
           <ActionBar
@@ -89,6 +97,24 @@ class LiberalSources extends Component {
           <center>
             <center>
               <CircularProgress color="secondary" />
+            </center>
+          </center>
+        </div>
+      );
+    } else if (this.state.output.length === 0 && this.state.render) {
+      return (
+        <div>
+          <ActionBar
+            topic={this.props.topic}
+            option={this.props.option}
+            updateTopic={this.props.updateTopic}
+            updateOption={this.props.updateOption}
+            refreshPage={this.refreshPage}
+          />
+          <br />
+          <center>
+            <center>
+              No results found. Please try again with a new option or key-word.
             </center>
           </center>
         </div>
