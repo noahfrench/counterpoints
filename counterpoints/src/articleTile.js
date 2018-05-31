@@ -12,7 +12,9 @@ const styles = theme => ({
   paper1: {
     height: 100,
     width: 1100,
-    padding: 8
+    padding: 8,
+    backgroundColor: "#FAFAFA",
+    square: true
   }
 });
 class ArticleTile extends Component {
