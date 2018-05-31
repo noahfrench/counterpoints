@@ -104,11 +104,11 @@ class ConservativeSources extends Component {
         <br />
         <center>
           <Grid container spacing={16}>
-            <Grid item xs={12}>
-              {this.state.output.map(article => (
+            {this.state.output.map(article => (
+              <Grid item xs={12}>
                 <ArticleTile article={article} />
-              ))}
-            </Grid>
+              </Grid>
+            ))}
           </Grid>
         </center>
       </div>

@@ -55,7 +55,7 @@ class GlobalSources extends Component {
         { code: "en" },
         { code: "ru" }
       ],
-      count: 0
+      count: -1
     };
   }
   //re-call componentDidMount to do a new search on results page
@@ -109,6 +109,7 @@ class GlobalSources extends Component {
             .catch(err => {
               console.log(err);
             });
+          this.setState({ count: this.state.output.length });
         })
         .catch(err => {
           console.log(err);
@@ -117,7 +118,7 @@ class GlobalSources extends Component {
   }
 
   render() {
-    if (this.state.output.length === 0) {
+    if (this.state.count === 0) {
       return (
         <div>
           <ActionBar
@@ -147,11 +148,11 @@ class GlobalSources extends Component {
         <br />
         <center>
           <Grid container spacing={16}>
-            <Grid item xs={12}>
-              {this.state.output.map(article => (
+            {this.state.output.map(article => (
+              <Grid item xs={12}>
                 <ArticleTile1 article={article} />
-              ))}
-            </Grid>
+              </Grid>
+            ))}
           </Grid>
         </center>
       </div>
