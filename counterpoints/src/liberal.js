@@ -42,6 +42,10 @@ class LiberalSources extends Component {
     this.componentDidMount();
   };
 
+  changeTheRender = e => {
+    this.setState({ render: false });
+  };
+
   componentDidMount() {
     //desiredArticles stores the results pulled from the large array for each news outlet
     let desiredArticles = [];
@@ -92,6 +96,7 @@ class LiberalSources extends Component {
             updateTopic={this.props.updateTopic}
             updateOption={this.props.updateOption}
             refreshPage={this.refreshPage}
+            changeTheRender={this.changeTheRender}
           />
           <br />
           <center>
@@ -110,6 +115,7 @@ class LiberalSources extends Component {
             updateTopic={this.props.updateTopic}
             updateOption={this.props.updateOption}
             refreshPage={this.refreshPage}
+            changeTheRender={this.changeTheRender}
           />
           <br />
           <center>
@@ -128,6 +134,7 @@ class LiberalSources extends Component {
           updateTopic={this.props.updateTopic}
           updateOption={this.props.updateOption}
           refreshPage={this.refreshPage}
+          changeTheRender={this.changeTheRender}
         />
         <br />
         <center>

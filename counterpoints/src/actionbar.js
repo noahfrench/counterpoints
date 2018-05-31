@@ -44,13 +44,17 @@ class ActionBar extends React.Component {
             disabled={this.props.option === ""}
             onKeyPress={ev => {
               if (ev.key === "Enter") {
+                this.props.changeTheRender(ev);
                 this.props.refreshPage(ev);
               }
             }}
           />
           <IconButton
             disabled={this.props.topic === ""}
-            onClick={e => this.props.refreshPage(e)}
+            onClick={e => {
+              this.props.changeTheRender(e);
+              this.props.refreshPage(e);
+            }}
           >
             <SearchIcon />
           </IconButton>
