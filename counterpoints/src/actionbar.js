@@ -30,8 +30,10 @@ class ActionBar extends React.Component {
     const { classes } = this.props;
     return (
       <div className="ActionBar">
-        <h1 className="ActionBar-title" onClick={e => this.handleHomeClick(e)}>
-          <Link to="/Main">COUNTERPOINTS</Link>
+        <h1 className="ActionBar-title">
+          <Link to="/Main" onClick={e => this.handleHomeClick(e)}>
+            COUNTERPOINTS
+          </Link>
         </h1>
         <div className="ActionBar-search-bar">
           <Input
@@ -44,13 +46,17 @@ class ActionBar extends React.Component {
             disabled={this.props.option === ""}
             onKeyPress={ev => {
               if (ev.key === "Enter") {
+                this.props.changeTheRender(ev);
                 this.props.refreshPage(ev);
               }
             }}
           />
           <IconButton
             disabled={this.props.topic === ""}
-            onClick={e => this.props.refreshPage(e)}
+            onClick={e => {
+              this.props.changeTheRender(e);
+              this.props.refreshPage(e);
+            }}
           >
             <SearchIcon />
           </IconButton>

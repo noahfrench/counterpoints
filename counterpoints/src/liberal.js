@@ -31,7 +31,8 @@ class LiberalSources extends Component {
         { abrv: "the-economist" },
         { abrv: "the-huffington-post" },
         { abrv: "msnbc" }
-      ]
+      ],
+      render: false
     };
   }
 
@@ -39,6 +40,10 @@ class LiberalSources extends Component {
   refreshPage = e => {
     e.preventDefault();
     this.componentDidMount();
+  };
+
+  changeTheRender = e => {
+    this.setState({ render: false, output: [] });
   };
 
   componentDidMount() {
@@ -73,9 +78,16 @@ class LiberalSources extends Component {
           console.log(err);
         });
     }
+    setTimeout(
+      function() {
+        //Start the timer
+        this.setState({ render: true }); //After 1 second, set render to true
+      }.bind(this),
+      2000
+    );
   }
   render() {
-    if (this.state.output.length === 0) {
+    if (this.state.output.length === 0 && !this.state.render) {
       return (
         <div>
           <ActionBar
@@ -84,11 +96,31 @@ class LiberalSources extends Component {
             updateTopic={this.props.updateTopic}
             updateOption={this.props.updateOption}
             refreshPage={this.refreshPage}
+            changeTheRender={this.changeTheRender}
           />
           <br />
           <center>
             <center>
               <CircularProgress color="secondary" />
+            </center>
+          </center>
+        </div>
+      );
+    } else if (this.state.output.length === 0 && this.state.render) {
+      return (
+        <div>
+          <ActionBar
+            topic={this.props.topic}
+            option={this.props.option}
+            updateTopic={this.props.updateTopic}
+            updateOption={this.props.updateOption}
+            refreshPage={this.refreshPage}
+            changeTheRender={this.changeTheRender}
+          />
+          <br />
+          <center>
+            <center>
+              No results found. Please try again with a new option or key-word.
             </center>
           </center>
         </div>
@@ -102,6 +134,7 @@ class LiberalSources extends Component {
           updateTopic={this.props.updateTopic}
           updateOption={this.props.updateOption}
           refreshPage={this.refreshPage}
+          changeTheRender={this.changeTheRender}
         />
         <br />
         <center>
