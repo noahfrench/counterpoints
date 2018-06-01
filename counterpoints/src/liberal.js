@@ -43,7 +43,7 @@ class LiberalSources extends Component {
   };
 
   changeTheRender = e => {
-    this.setState({ render: false });
+    this.setState({ render: false, output: [] });
   };
 
   componentDidMount() {

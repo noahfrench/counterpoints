@@ -66,7 +66,7 @@ class GlobalSources extends Component {
   };
 
   changeTheRender = e => {
-    this.setState({ render: false });
+    this.setState({ render: false, output: [] });
   };
 
   componentDidMount() {

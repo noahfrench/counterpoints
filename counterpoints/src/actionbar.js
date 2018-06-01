@@ -30,8 +30,10 @@ class ActionBar extends React.Component {
     const { classes } = this.props;
     return (
       <div className="ActionBar">
-        <h1 className="ActionBar-title" onClick={e => this.handleHomeClick(e)}>
-          <Link to="/Main">COUNTERPOINTS</Link>
+        <h1 className="ActionBar-title">
+          <Link to="/Main" onClick={e => this.handleHomeClick(e)}>
+            COUNTERPOINTS
+          </Link>
         </h1>
         <div className="ActionBar-search-bar">
           <Input
