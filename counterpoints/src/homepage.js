@@ -22,7 +22,7 @@ class Homepage extends React.Component {
 
   render() {
     if (this.state.enterPressed === true) {
-      return <Redirect to="/Results" />;
+      return <Redirect to="/results" />;
     }
     const { classes } = this.props;
     return (
@@ -78,7 +78,7 @@ class Homepage extends React.Component {
           }}
         />
         <Link
-          to="/Results"
+          to="/results"
           onClick={e => (this.props.topic === "" ? e.preventDefault() : true)}
         >
           <IconButton disabled={this.props.topic === ""}>
