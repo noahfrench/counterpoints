@@ -31,7 +31,7 @@ class ActionBar extends React.Component {
     return (
       <div className="ActionBar">
         <h1 className="ActionBar-title">
-          <Link to="/Main" onClick={e => this.handleHomeClick(e)}>
+          <Link to="/main" onClick={e => this.handleHomeClick(e)}>
             COUNTERPOINTS
           </Link>
         </h1>

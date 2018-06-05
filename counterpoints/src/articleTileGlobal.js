@@ -18,7 +18,7 @@ const styles = theme => ({
     square: true
   }
 });
-class ArticleTile1 extends Component {
+class ArticleTileGlobal extends Component {
   //constructor, state is article title which will be translated
   constructor(props) {
     super(props);
@@ -37,7 +37,8 @@ class ArticleTile1 extends Component {
             this.props.article.art.title.replace("#", "") +
             "&lang=" +
             this.props.article.code +
-            "-en&key=trnsl.1.1.20180524T202355Z.be1de689c215054b.b0fa44dcd929936ea64480d4a598bba3cc7f9029"
+            "-en&key=" +
+            this.props.api
         )
         .then(response => {
           //set state to translated title
@@ -86,4 +87,4 @@ class ArticleTile1 extends Component {
     );
   }
 }
-export default withStyles(styles)(ArticleTile1);
+export default withStyles(styles)(ArticleTileGlobal);

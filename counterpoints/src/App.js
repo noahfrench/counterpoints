@@ -4,13 +4,15 @@ import GlobalSources from "./global.js";
 import ConservativeSources from "./conservative.js";
 import LiberalSources from "./liberal.js";
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 // Component that controls the Results page
 class App extends React.Component {
   // Props passed down from Route.js: topic, option, updateTopic(newVal), updateOption(newVal)
   constructor(props) {
     super(props);
     this.state = {
-      apiKey: "73dc88fca73640e5a7ada3a24f39e3f2"
+      apiKey: API_KEY
     };
   }
 

@@ -26,9 +26,9 @@ export default class RouteA extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Redirect to="/Main" />
+          <Redirect to="/main" />
           <Route
-            path="/Main"
+            path="/main"
             render={() => (
               <Homepage
                 topic={this.state.topic}
@@ -39,7 +39,7 @@ export default class RouteA extends Component {
             )}
           />
           <Route
-            path="/Results"
+            path="/results"
             render={() => (
               <App
                 topic={this.state.topic}
