@@ -8,6 +8,8 @@ import ArticleTileGlobal from "./articleTileGlobal.js";
 import ActionBar from "./actionbar.js";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
+const API_TRANSLATE = process.env.REACT_APP_API_TRANSLATE;
+
 const styles = theme => ({
   paper1: {
     height: 120,
@@ -19,6 +21,7 @@ class GlobalSources extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      translate_api: API_TRANSLATE,
       output: [],
       //sources holds the api abbreviations associated with each news outlet, and their location
       sources: [
@@ -81,7 +84,8 @@ class GlobalSources extends Component {
             this.props.topic.replace("#", "") +
             "&lang=en-" +
             this.state.langs[j].code +
-            "&key=trnsl.1.1.20180524T202355Z.be1de689c215054b.b0fa44dcd929936ea64480d4a598bba3cc7f9029"
+            "&key=" +
+            this.state.translate_api
         )
         .then(response => {
           let result = response.data.text;
@@ -184,7 +188,10 @@ class GlobalSources extends Component {
           <Grid container spacing={16}>
             {this.state.output.map(article => (
               <Grid item xs={12}>
-                <ArticleTileGlobal article={article} />
+                <ArticleTileGlobal
+                  article={article}
+                  api={this.state.translate_api}
+                />
               </Grid>
             ))}
           </Grid>

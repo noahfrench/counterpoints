@@ -37,7 +37,8 @@ class ArticleTileGlobal extends Component {
             this.props.article.art.title.replace("#", "") +
             "&lang=" +
             this.props.article.code +
-            "-en&key=trnsl.1.1.20180524T202355Z.be1de689c215054b.b0fa44dcd929936ea64480d4a598bba3cc7f9029"
+            "-en&key=" +
+            this.props.api
         )
         .then(response => {
           //set state to translated title
