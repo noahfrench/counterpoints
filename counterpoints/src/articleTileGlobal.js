@@ -18,7 +18,7 @@ const styles = theme => ({
     square: true
   }
 });
-class ArticleTile1 extends Component {
+class ArticleTileGlobal extends Component {
   //constructor, state is article title which will be translated
   constructor(props) {
     super(props);
@@ -86,4 +86,4 @@ class ArticleTile1 extends Component {
     );
   }
 }
-export default withStyles(styles)(ArticleTile1);
+export default withStyles(styles)(ArticleTileGlobal);

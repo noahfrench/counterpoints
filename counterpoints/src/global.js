@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import ArticleTile1 from "./articleTile1.js";
+import ArticleTileGlobal from "./articleTileGlobal.js";
 import ActionBar from "./actionbar.js";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -184,7 +184,7 @@ class GlobalSources extends Component {
           <Grid container spacing={16}>
             {this.state.output.map(article => (
               <Grid item xs={12}>
-                <ArticleTile1 article={article} />
+                <ArticleTileGlobal article={article} />
               </Grid>
             ))}
           </Grid>
